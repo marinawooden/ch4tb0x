@@ -1,3 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Tangsa:wght@400;500;600;700&display=swap');
+
+#smiley-select {
+  position: absolute;
+  top: 22px;
+  left: calc(100% - 26px);
+  width: 50%;
+  height: 116px;
+  z-index: 1;
+  overflow-y: scroll;
+  background-color: white;
+  border: 1px solid;
+  box-shadow: 0px 10px 15px #00000059;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+#smiley-select.hidden {
+  display: none;
+}
+
+#smiley-select > * {
+  margin: 3px;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  transition: all .3s ease-out;
+}
+
+#smiley-select > *:hover {
+  filter: drop-shadow(0 0 3px #00000077);
+  transform: scale(1.15);
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -5,25 +40,31 @@
 }
 
 .chatbox {
-  border: 1px solid black;
+  image-rendering: pixelated;
+  border: 2px solid black;
+  margin: 10px;
+  box-shadow: 1px 4px 25px #00000036;
   background-color: white;
+  border-radius: 10px;
   color: black;
   padding: 10px;
   display: inline-block;
-  font-family: Helvetica, Arial, sans-serif;
   font-size: .8rem;
   width: 50%;
   max-width: 400px;
 }
 
+.chatbox, .chatbox input, .chatbox div[contenteditable='true'] {
+  font-family: 'Noto Sans Tangsa', Helvetica, Arial, sans-serif;
+}
+
 .chatbox main {
   background-color: white;
-  border: 1px solid black;
+  border: 2px solid black;
 }
 
 .chatbox input,
-.chatbox textarea {
-  font-family: Helvetica, Arial, sans-serif;
+.chatbox div[contenteditable='true'] {
   font-size: small;
   color: black;
   outline: none;
@@ -33,16 +74,15 @@
 .chatbox input {
   width: calc(100% - 4px);
   border: none;
-  border-top: 1px solid black;
   font-weight: bold;
 }
 
-.chatbox textarea {
+.chatbox div[contenteditable='true'] {
   resize: none;
   border-radius: 0;
   border: 0;
   border-top: 1px solid #000;
-  width: calc(100% - 4px);
+  width: 100%;
   min-height: 50px;
 }
 
@@ -58,21 +98,29 @@
 .chatbox form {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .chatbox button {
   position: absolute;
   align-self: flex-end;
-  margin-top: 54.5px;
-  margin-right: -1px;
   border: 1px solid black;
   background-color: black;
   border-radius: 0px;
   color: white;
+  bottom: 0;
 }
 
 .user {
   font-weight: bold;
+}
+
+.userinfo {
+  display: flex;
+}
+
+.userinfo .country {
+  margin-left: 5px;
 }
 
 .message {
@@ -88,11 +136,41 @@
   margin: 0;
 }
 
+.messagecontent {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
 .message time {
   width: 20%;
   max-width: 100px;
   text-align: right;
   font-size: 10px;
+}
+
+.text-options {
+  height: 21px;
+  border-top: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.text-options .option {
+  padding: 0 5px;
+  width: 15px;
+  border-left: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  cursor: pointer;
+  transition: 0.5s background-color ease-out;
+}
+
+.text-options .option:hover {
+  background-color: rgba(0, 0, 0, 0.311);
 }
 
 footer a {
@@ -107,6 +185,6 @@ footer a:hover {
 }
 
 input::placeholder,
-textarea::placeholder {
+div[contenteditable='true']::placeholder {
   color: lightgrey;
 }

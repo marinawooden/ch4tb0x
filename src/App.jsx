@@ -3,7 +3,7 @@ import "./styles/ChatBox.css";
 
 function App(props) {
   return (
-    <ChatBox identifier={props["indentifier"]} />
+    <ChatBox identifier={props["indentifier"] || "12345678"} />
   );
 }
 
